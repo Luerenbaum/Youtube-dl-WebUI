@@ -9,7 +9,7 @@ class Downloader
 	private $errors = [];
 	private $download_path = "";
 	private $log_path = "";
-	private $outfilename = "%(title)s-%(id)s.%(ext)s";
+	private $outfilename = "%(title)s.%(ext)s";
 
 	public function __construct($post)
 	{
