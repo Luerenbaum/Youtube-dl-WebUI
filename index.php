@@ -32,14 +32,8 @@
 				$outfilename = $_POST['outfilename'];
 			}
 
-			$vformat = False;
-			if(isset($_POST['vformat']) && !empty($_POST['vformat']))
-			{
-				$vformat = $_POST['vformat'];
-			}
-
 			$downloader = new Downloader($_POST['urls']);
-			$downloader->download($audio_only, $outfilename, $vformat);
+			$downloader->download($audio_only, $outfilename);
 
 			if(!isset($_SESSION['errors']))
 			{
@@ -87,12 +81,6 @@
 						<div class="input-group">
 							<span class="input-group-text" id="outfilename-addon">Filename:</span>
 							<input class="form-control" id="outfilename" name="outfilename" placeholder="Output filename template" type="text" aria-describedby="outfilename-addon">
-						</div>
-					</div>
-					<div class="col-auto my-1">
-						<div class="input-group">
-							<span class="input-group-text" id="vformat-addon">Format:</span>
-							<input class="form-control" id="vformat" name="vformat" placeholder="Video format code" type="text" aria-describedby="vformat-addon" />
 						</div>
 					</div>
 				</div>

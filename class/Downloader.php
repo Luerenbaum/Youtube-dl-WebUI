@@ -10,7 +10,6 @@ class Downloader
 	private $download_path = "";
 	private $log_path = "";
 	private $outfilename = "%(title)s-%(id)s.%(ext)s";
-	private $vformat = false;
 
 	public function __construct($post)
 	{
@@ -50,7 +49,7 @@ class Downloader
 		}
 	}
 
-	public function download($audio_only, $outfilename=False, $vformat=False) {
+	public function download($audio_only, $outfilename=False) {
 		if ($audio_only && !$this->check_requirements($audio_only))
 		{
 			return;
@@ -65,10 +64,6 @@ class Downloader
 		if ($outfilename)
 		{
 			$this->outfilename = $outfilename;
-		}
-		if ($vformat)
-		{
-			$this->vformat = $vformat;
 		}
 
 		if($this->config["max_dl"] == 0)
@@ -272,14 +267,12 @@ class Downloader
 	private function do_download($audio_only)
 	{
 		$cmd = $this->config["bin"];
+		// Video Format
+		$cmd .= " --format bestvideo+bestaudio/best --merge-output-format mp4 --add-metadata --embed-chapters ";
 		$cmd .= " --ignore-error -o ".$this->download_path."/";
 		$cmd .= escapeshellarg($this->outfilename);
-		
-		if ($this->vformat) 
-		{
-			$cmd .= " --format ";
-			$cmd .= escapeshellarg($this->vformat);
-		}
+
+
 		if($audio_only)
 		{
 			$cmd .= " -x ";
