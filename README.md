@@ -15,7 +15,8 @@ It supports:
 * logging
 * fetch info without download
 
-### You can now extract the audio of a video and download multiple videos at the same time !
+*Using video format:*\
+`-f bestvideo+bestaudio/best --merge-output-format mp4 --add-metadata -o "%(title)s.%(ext)s" --embed-chapters`
 
 ## Requirements
 - A web server (Apache or nginx) on Unix system.
