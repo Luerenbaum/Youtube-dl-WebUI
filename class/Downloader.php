@@ -268,7 +268,7 @@ class Downloader
 	{
 		$cmd = $this->config["bin"];
 		// Video Format
-		$cmd .= " --format bestvideo+bestaudio/best --merge-output-format mp4 --add-metadata --embed-chapters";
+		$cmd .= " --f bestvideo+bestaudio/best --merge-output-format mp4 --add-metadata --embed-chapters";
 		$cmd .= " --ignore-error -o ".$this->download_path."/";
 		$cmd .= escapeshellarg($this->outfilename);
 
